@@ -3,6 +3,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.os.Bundle;
@@ -73,30 +74,66 @@ public class ShowActivity extends AppCompatActivity {
             mRecyclerView.setHasFixedSize(true);
         }
         //using staggered grid pattern in recyclerview
-        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        //Say Hello to our new FirebaseUI android Element, i.e., FirebaseRecyclerAdapter
-        FirebaseRecyclerAdapter<Opportunity,OpportunityViewHolder> adapter = new FirebaseRecyclerAdapter<Opportunity, OpportunityViewHolder>(
-                Opportunity.class,
-                R.layout.showall,
-                OpportunityViewHolder.class,
-                //referencing the node where we want the database to store the data from our Object
-                mDatabaseReference.child("Opportunities").orderByChild(fname).equalTo(fval)
-        ) {
-            @Override
-            protected void populateViewHolder(OpportunityViewHolder viewHolder, Opportunity model, int position) {
-                if(tvNoMovies.getVisibility()== View.VISIBLE){
-                    tvNoMovies.setVisibility(View.GONE);
-                }
-                viewHolder.tvMovieName.setText(model.getTitle());
-                viewHolder.desc.setText(model.getDescription());
-                //viewHolder.ratingBar.setRating(model.get());
-              //  Picasso.with(MainActivity.this).load(model.getMoviePoster()).into(viewHolder.ivMoviePoster);
+if(fname.equals("null"))
+{
+    //Say Hello to our new FirebaseUI android Element, i.e., FirebaseRecyclerAdapter
+    FirebaseRecyclerAdapter<Opportunity,OpportunityViewHolder> adapter = new FirebaseRecyclerAdapter<Opportunity, OpportunityViewHolder>(
+            Opportunity.class,
+            R.layout.showall,
+            OpportunityViewHolder.class,
+            //referencing the node where we want the database to store the data from our Object
+            mDatabaseReference.child("Opportunities")//.orderByChild(fname).equalTo(fval)
+    ) {
+        @Override
+        protected void populateViewHolder(OpportunityViewHolder viewHolder, Opportunity model, int position) {
+            if(tvNoMovies.getVisibility()== View.VISIBLE){
+                tvNoMovies.setVisibility(View.GONE);
             }
-        };
+            viewHolder.title.setText(model.getTitle());
+            viewHolder.desc.setText(model.getDescription());
+            viewHolder.h.setText(model.getHours());
+            viewHolder.e.setText(model.getEnd());
+            viewHolder.s.setText(model.getSt());
+            viewHolder.p.setText(model.getPincode());
+            viewHolder.ad.setText(model.getAddress());
+            viewHolder.ci.setText(model.getCity());
+
+        }
+    };
+    mRecyclerView.setAdapter(adapter);
+}
+        else {
+    //Say Hello to our new FirebaseUI android Element, i.e., FirebaseRecyclerAdapter
+    FirebaseRecyclerAdapter<Opportunity, OpportunityViewHolder> adapter = new FirebaseRecyclerAdapter<Opportunity, OpportunityViewHolder>(
+            Opportunity.class,
+            R.layout.showall,
+            OpportunityViewHolder.class,
+            //referencing the node where we want the database to store the data from our Object
+            mDatabaseReference.child("Opportunities").orderByChild(fname).equalTo(fval)
+    ) {
+        @Override
+        protected void populateViewHolder(OpportunityViewHolder viewHolder, Opportunity model, int position) {
+            if (tvNoMovies.getVisibility() == View.VISIBLE) {
+                tvNoMovies.setVisibility(View.GONE);
+            }
+            viewHolder.title.setText(model.getTitle());
+            viewHolder.desc.setText(model.getDescription());
+            viewHolder.h.setText(model.getHours());
+            viewHolder.e.setText(model.getEnd());
+            viewHolder.s.setText(model.getSt());
+            viewHolder.p.setText(model.getPincode());
+            viewHolder.ad.setText(model.getAddress());
+            viewHolder.ci.setText(model.getCity());
+
+        }
+    };
+    mRecyclerView.setAdapter(adapter);
+}
 Log.i(tp,"b4 setadapter");
-        mRecyclerView.setAdapter(adapter);
+
 
         Log.i(tp,"after adapter");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -112,16 +149,20 @@ Log.i(tp,"b4 setadapter");
     //ViewHolder for our Firebase UI
     public static class OpportunityViewHolder extends RecyclerView.ViewHolder{
         //Log.i(tp,"inside");
-        TextView tvMovieName,desc;
-        RatingBar ratingBar;
-        ImageView ivMoviePoster;
+        TextView title,desc,h,s,e,p,ad,ci;
 
         public OpportunityViewHolder(View v) {
             super(v);
-            tvMovieName = (TextView) v.findViewById(R.id.tv_name);
+            title = (TextView) v.findViewById(R.id.tv_name);
             desc = (TextView) v.findViewById(R.id.des);
-           // ratingBar = (RatingBar) v.findViewById(R.id.rating_bar);
-            //ivMoviePoster = (ImageView) v.findViewById(R.id.iv_movie_poster);
+            h = (TextView) v.findViewById(R.id.htv);
+            s = (TextView) v.findViewById(R.id.stv);
+            e = (TextView) v.findViewById(R.id.etv);
+            ci = (TextView) v.findViewById(R.id.citytv);
+            ad = (TextView) v.findViewById(R.id.addresstv);
+            p = (TextView) v.findViewById(R.id.pintv);
+
+
         }
     }
 }

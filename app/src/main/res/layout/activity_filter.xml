@@ -12,7 +12,7 @@
     tools:context="com.example.vivekgandhi.tfi.FilterActivity">
 
     <TextView
-        android:text="select data to filter"
+        android:text="select data to filter (to display all record , dont select any radio button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+
         android:hint="Write filter value"
         android:ems="10"
         android:id="@+id/fv" />

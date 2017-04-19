@@ -31,7 +31,7 @@ public class FilterActivity extends AppCompatActivity {
         }
         else
         {
-            filtername="";
+            filtername="null";
         }
         return filtername;
     }
