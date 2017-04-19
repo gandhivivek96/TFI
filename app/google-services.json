@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "992598892635",
+    "firebase_url": "https://preworktfi.firebaseio.com",
+    "project_id": "preworktfi",
+    "storage_bucket": "preworktfi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992598892635:android:30e36f7ac9d2a877",
+        "android_client_info": {
+          "package_name": "com.example.vivekgandhi.tfi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992598892635-e290tcmg4ghgvhgreb9q8dfvilcvqn6p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vivekgandhi.tfi",
+            "certificate_hash": "2ac7f5c90148a3fa261e9a3ee4691300033cfc6c"
+          }
+        },
+        {
+          "client_id": "992598892635-v0euglj84pjvjdbpc9pmdf1o8vtaqsn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuOjxmi7CihSWS0JBwRgetyXIBcX_ltYs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992598892635-v0euglj84pjvjdbpc9pmdf1o8vtaqsn6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
